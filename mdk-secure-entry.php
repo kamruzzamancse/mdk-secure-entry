@@ -171,6 +171,27 @@ function mdk_login_form() {
             $password = sanitize_text_field($_POST['mdk_login_password']);
             $remember = isset($_POST['mdk_login_remember']) ? true : false; // Remember me checkbox
 
+            // Form Validation
+            if (empty($username) || empty($password)) {
+                wp_redirect(add_query_arg('login_error', 'Please fill in all fields.', wp_get_referer()));
+                exit;
+            }
+
+            // Check if the username is a valid email
+            if (is_email($username)) {
+                $user = get_user_by('email', $username);
+                if (!$user) {
+                    wp_redirect(add_query_arg('login_error', 'No user found with this email.', wp_get_referer()));
+                    exit;
+                }
+            } else {
+                // Check if username exists in the database
+                if (!username_exists($username)) {
+                    wp_redirect(add_query_arg('login_error', 'No user found with this username.', wp_get_referer()));
+                    exit;
+                }
+            }
+
             // Login credentials
             $creds = array(
                 'user_login'    => $username,
@@ -183,7 +204,8 @@ function mdk_login_form() {
 
             // Check if login was successful
             if (is_wp_error($user)) {
-                echo '<div class="error-message">Login failed: ' . $user->get_error_message() . '</div>';
+                wp_redirect(add_query_arg('login_error', 'Login failed. Please try again.', wp_get_referer()));
+                exit;
             } else {
                 // Redirect user based on their role
                 if (current_user_can('administrator')) {
@@ -195,31 +217,17 @@ function mdk_login_form() {
                 } else {
                     wp_redirect(home_url()); // Default redirect if no role matches
                 }
-                exit;
+                exit; // Ensure no further processing
             }
         } else {
-            echo '<div class="error-message">Security check failed. Please try again.</div>';
+            wp_redirect(add_query_arg('login_error', 'Security check failed. Please try again.', wp_get_referer()));
+            exit;
         }
     }
     return ob_get_clean();
 }
 add_shortcode('mdk_login_form', 'mdk_login_form');
 
-
-// Redirect users after successful login based on their role
-function mdk_login_redirect($redirect_to, $request, $user) {
-    // Check if the user is a Realtor or Client
-    if (in_array('realtor', (array) $user->roles)) {
-        return home_url('/realtor-dashboard'); // Redirect Realtors to Realtor Dashboard
-    } elseif (in_array('client', (array) $user->roles)) {
-        return home_url('/client-dashboard'); // Redirect Clients to Client Dashboard
-    } elseif (in_array('administrator', (array) $user->roles)) {
-        return admin_url(); // Redirect Admin to the WordPress Admin Dashboard
-    }
-
-    return $redirect_to; // Default redirection if no specific role matched
-}
-add_filter('login_redirect', 'mdk_login_redirect', 10, 3);
 
 
 // Custom Password Reset Form (Shortcode)

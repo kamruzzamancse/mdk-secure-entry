@@ -160,8 +160,8 @@
 
 .mdk-login-form a{
     color: #0073e6;
+    text-decoration: none!important;
 }
-
 
 /* Container for the login form end *******************************/
 
