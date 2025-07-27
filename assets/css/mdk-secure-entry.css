@@ -1,0 +1,167 @@
+/* Container for the registration form start ***************************/
+.mdk-registration-form {
+    max-width: 500px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Input fields and select box styling */
+.mdk-registration-form input,
+.mdk-registration-form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.mdk-registration-form input:focus,
+.mdk-registration-form select:focus {
+    border-color: #0073e6;
+    outline: none;
+}
+
+/* Button styling */
+.mdk-registration-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #0073e6;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mdk-registration-form button:hover {
+    background-color: #005bb5;
+}
+
+/* Label styling */
+.mdk-registration-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+/* Error message styling */
+.mdk-registration-form .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Success message styling */
+.mdk-registration-form .success-message {
+    color: green;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Login link styling */
+.mdk-registration-form .mdk-login-link {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 15px;
+}
+
+.mdk-registration-form .mdk-login-link a {
+    color: #0073e6;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.mdk-registration-form .mdk-login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Container for the registration form end **************************/
+
+/* Container for the login form start *******************************/
+
+.mdk-login-form {
+    max-width: 500px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Input fields and button styling */
+
+.mdk-login-form input,
+.mdk-login-form button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+/* Input and button focus styles */
+.mdk-login-form input:focus,
+.mdk-login-form button:focus {
+    border-color: #0073e6;
+    outline: none;
+}
+
+/* Button styling */
+.mdk-login-form button {
+    background-color: #0073e6;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mdk-login-form button:hover {
+    background-color: #005bb5;
+}
+
+/* Error message styling */
+.mdk-login-form .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Success message styling */
+.mdk-login-form .success-message {
+    color: green;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Styling the checkbox and label */
+.mdk-login-form label {
+    display: inline-flex;
+    align-items: center; /* Ensures the checkbox and text are aligned */
+    font-size: 16px;
+    margin-bottom: 12px; /* Adjust spacing */
+}
+
+.mdk-login-form input[type="checkbox"] {
+    margin-top: 10px;
+    margin-right: 8px; 
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.mdk-login-form a{
+    color: #0073e6;
+}
+
+
+/* Container for the login form end *******************************/
+
